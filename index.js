@@ -1,11 +1,13 @@
 $(document).ready(function(){
 
     function searchArchives(){
-       // https://www.europeana.eu/api/v2/search.json?wskey=HutTAJv7w&query=mona lisa&thumbnail=true&media=true
+        //general search API
+       // https://api.europeana.eu/api/v2/opensearch.rss?count=12&searchTerms=WWII&startIndex=1
         const apiKey = 'HutTAJv7w';
         let searchTopic = $('#searchTopic').val();
-        //let maxResults = $('#maxResults').val();
-        const apiURL = 'https://www.europeana.eu/api/v2/search.json?';
+        let maxResults = $('#maxResults').val(); //count= parameter
+        const apiURL = 'https://api.europeana.eu/api/v2/opensearch.rss?';
+        //'https://www.europeana.eu/api/v2/search.json?' record search API
         let apiPath = apiURL+'wskey='+apiKey+'&query='+searchTopic+'thumbanil=true&media=true';
    
         console.log(searchTopic);
@@ -28,7 +30,7 @@ $(document).ready(function(){
 
     function displayResults(responseJson){
         $('#results-list').empty();    
-         for (let i = 0; i < responseJson.data.length; i++){
+         for (let i = 0; i < responseJson.items.length; i++){
             $('#results-list').append(
                 `<li><h3><a href="${responseJson.item[i].edmIsShownBy}">${responseJson.item[i].title}</a></h3>
                 <p>${responseJson.data[i].description}</p>
@@ -43,7 +45,7 @@ $(document).ready(function(){
     function runForm(){
         $('form').submit(e=>{
             event.preventDefault();
-            searchParks();
+            searchArchives();
     
         });
     }
