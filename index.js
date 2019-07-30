@@ -1,14 +1,16 @@
 $(document).ready(function(){
 
     function searchArchives(){
-        //general search API
+        //general search API - xml format
        // https://api.europeana.eu/api/v2/opensearch.rss?count=12&searchTerms=WWII&startIndex=1
-        const apiKey = 'HutTAJv7w';
+       //let apiPath = apiURL+'count='+maxResults+'&searchTerms='+searchTopic+'startIndex=1';
+        const apiKey = 'HutTAJv7w'; //needed for records API- not openseatch.rss
         let searchTopic = $('#searchTopic').val();
-        let maxResults = $('#maxResults').val(); //count= parameter
-        const apiURL = 'https://api.europeana.eu/api/v2/opensearch.rss?';
-        //'https://www.europeana.eu/api/v2/search.json?' record search API
-        let apiPath = apiURL+'wskey='+apiKey+'&query='+searchTopic+'thumbanil=true&media=true';
+        //let maxResults = $('#maxResults').val(); //count= parameter avaliable for opensearch
+        //const apiURL = 'https://api.europeana.eu/api/v2/opensearch.rss?'; open search API- not json
+        const apiURL = 'https://www.europeana.eu/api/v2/search.json?' //record search API
+        let apiPath = 
+        
    
         console.log(searchTopic);
         console.log(apiPath);
