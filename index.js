@@ -1,60 +1,55 @@
-$(document).ready(function(){
+function searchArchives(){
+    
+    const apiKey = 'HutTAJv7w'; 
+    let searchTopic = $('#searchTopic').val();
+    let maxResults= $('#maxResults').val();
+    let apiPath = 'https://www.europeana.eu/api/v2/search.json?profile=standard&query='+searchTopic+'&rows='+maxResults+'&wskey='+apiKey;
+    
 
-    function searchArchives(){
-        //general search API - xml format
-       // https://api.europeana.eu/api/v2/opensearch.rss?count=12&searchTerms=WWII&startIndex=1
-       //let apiPath = apiURL+'count='+maxResults+'&searchTerms='+searchTopic+'startIndex=1';
-        const apiKey = 'HutTAJv7w'; //needed for records API- not openseatch.rss
-        let searchTopic = $('#searchTopic').val();
-        //let maxResults = $('#maxResults').val(); //count= parameter avaliable for opensearch
-        //const apiURL = 'https://api.europeana.eu/api/v2/opensearch.rss?'; open search API- not json
-        const apiURL = 'https://www.europeana.eu/api/v2/search.json?' //record search API
-        let apiPath = 
+    console.log(searchTopic);
+    console.log(apiPath);
+    console.log(maxResults);
+
+    fetch(apiPath)
+    .then(status)
+    .then(response=>response.json())
+    .then(responseJson=>
+            displayResults(responseJson))
+}
+
+function status(response){
+    if(!response.ok){
+        throw alert("Oops. Something went wrong!") //err catch
+    }
+    return response;
+}
+
+function displayResults(responseJson){
+    $('#results-list').empty();    
+        //for (let i = 0; i < responseJson.items.length; i++){
+        for (const item of responseJson.items){    
+        $('#results-list').append(
+            `<li><h3><a href="${item.edmIsShownBy}">${item.title}</a></h3>
+            <p>${item.dcDescription[0]}</p>
+            <img src="${item.edmPreview}"> 
+            </li>`
+        )};
         
-   
-        console.log(searchTopic);
-        console.log(apiPath);
-        //console.log(maxResults);
+    $('#results').removeClass('hidden');
+}
 
-        fetch(apiPath)
-        .then(status)
-        .then(response=>response.json())
-        .then(responseJson=>
-                displayResults(responseJson))
-    }
 
-    function status(response){
-        if(!response.ok){
-            throw alert("Oops. Something went wrong!")
-        }
-        return response;
-    }
+function whenReady(){
+    $('form').submit(e=>{
+        event.preventDefault();
+        searchArchives();
 
-    function displayResults(responseJson){
-        $('#results-list').empty();    
-         for (let i = 0; i < responseJson.items.length; i++){
-            $('#results-list').append(
-                `<li><h3><a href="${responseJson.item[i].edmIsShownBy}">${responseJson.item[i].title}</a></h3>
-                <p>${responseJson.data[i].description}</p>
-                <img src="${responseJson.item[i].edmPreview}"> 
-                </li>`
-            )};
-            
-        $('#results').removeClass('hidden');
-    }
-   
+    });
+}
 
-    function runForm(){
-        $('form').submit(e=>{
-            event.preventDefault();
-            searchArchives();
-    
-        });
-    }
-    
-    $(runForm);
+$(whenReady);
 
 
 
 
-})
+
