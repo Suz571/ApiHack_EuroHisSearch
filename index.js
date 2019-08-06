@@ -15,15 +15,26 @@ function searchArchives(){
     .then(response=>response.json())
     .then(responseJson=>
             displayResults(responseJson))
-}
+    }
 
 function status(response){
     if(!response.ok){
-        throw alert("Oops. Something went wrong!") //err catch
+        throw new error ('Oops. something went wrong');
     }
-    return response;
+    return response; 
 }
+    
+/*
+function status(response){
+    try{
+       throw !response.ok;
+    } catch(e){
+       new alert("Oops. Something went wrong!");
+       console.log(e.name);
+       console.log(e.message);        
+    }
 
+*/
 function displayResults(responseJson){
     $('#results-list').empty();    
         //for (let i = 0; i < responseJson.items.length; i++){

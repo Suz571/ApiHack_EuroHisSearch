@@ -12,20 +12,22 @@
 <body>
     <header>
         <h1>European Archives</h1>
+        
     </header>
     <main>
         <div class="search-container">
             <div class ="search-title">
-                <h2>Search through arhives of European Musuems</h1>
+                <h2>Search through arhives of European Musuems</h2>
             </div>
             <form id="js-form"> 
-                <label for="search-term">Search</label>
+                <label for="search-term">Search Topic</label>
                 <input type="text" name="searchTopic" placeholder="example: WWII" id="searchTopic" required>
 
-                <label for="max-results">Maximum results to return</label>
+                <label for="max-results">Max results to return</label>
                 <input type="number" name="max-results" id="maxResults" placeholder="example: 10" value="10">
-
-                <input type="submit" value="Search">
+                
+                <input type="submit" class ="button" value="Search">
+                
             </form>
         </div>
         <div class="results-page hidden">
