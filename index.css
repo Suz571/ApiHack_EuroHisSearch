@@ -55,8 +55,10 @@ main{
   font-family: 'News Cycle', sans-serif;
   border: 1px solid black;
 }
-
-button, input[type="text"] {
+input{
+  padding: 5px;
+}
+button {
   padding: 5px;
   background-color: black;
   color:#fff8ed;
