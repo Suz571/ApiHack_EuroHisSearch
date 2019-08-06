@@ -1,31 +1,78 @@
 * {
-    box-sizing: border-box;
-    background-color: #fff8ed;
-  }
- 
-  body {
-    font-family: 'Roboto', sans-serif;
-    padding: 1rem;
+  box-sizing: border-box;
+  background-color: #fff8ed;
+}
+/* 
+.text--uppercase {
+text-transform: uppercase;
+}
 
-  }
-  
-  button, input[type="text"] {
-    padding: 5px;
-  }
-  
-  button:hover {
-    cursor: pointer;
-  }
-  
-  .container {
-    max-width: 600px;
-    margin: 0 auto;
-  }
-  
-  .error-message {
-      color: red;
-  }
-  
-  .hidden {
-    display: none;
-  }
+.display--block {
+display: block;
+}
+*/
+h1 {
+  font-family: 'UnifrakturMaguntia', cursive;
+}
+
+body {
+  padding: 1rem;
+}
+
+header{
+  font-family: 'Old Standard TT', serif;
+  border-top: 3px solid black;
+  border-bottom: 3px solid black;
+  min-height: 125px;
+  margin-top: 1.15rem;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+header::before,
+header::after {
+  content: "";
+  height: 1px;
+  flex-basis: 100%;
+  background: black;
+  margin-top: 2px;
+}
+main{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  margin: 0 auto;
+  min-height: 100vh;
+  max-width: 64em;
+  border-radius: 15px;
+  padding: 1.4rem 1rem;
+  padding-bottom: 0.5rem;
+}
+.results-page{
+  font-family: 'News Cycle', sans-serif;
+  border: 1px solid black;
+}
+
+button, input[type="text"] {
+  padding: 5px;
+  background-color: black;
+  color:#fff8ed;
+  border: 1px solid black;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.search-container {
+  max-width: 600px;
+  margin: 0 auto;
+  border: 1px solid black;
+}
+
+.hidden {
+  display: none;
+}
