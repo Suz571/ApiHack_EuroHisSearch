@@ -7,29 +7,34 @@
     <title>European Histroy Topic Search</title>
     <link rel="stylesheet" href="index.css">
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=News+Cycle|Old+Standard+TT|UnifrakturMaguntia&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <h1>Search through arhives of European Musuems</h1>
+    <header>
+        <h1>European Archives</h1>
+    </header>
+    <main>
+        <div class="search-container">
+            <div class ="search-title">
+                <h2>Search through arhives of European Musuems</h1>
+            </div>
+            <form id="js-form"> 
+                <label for="search-term">Search</label>
+                <input type="text" name="searchTopic" placeholder="example: WWII" id="searchTopic" required>
 
-        <form id="js-form"> 
-            <label for="search-term">Search</label>
-            <input type="text" name="searchTopic" placeholder="example: WWII" id="searchTopic" required>
+                <label for="max-results">Maximum results to return</label>
+                <input type="number" name="max-results" id="maxResults" placeholder="example: 10" value="10">
 
-            <label for="max-results">Maximum results to return</label>
-            <input type="number" name="max-results" id="maxResults" placeholder="example: 10" value="10">
-
-            <input type="submit" value="Search">
-        </form>
-
-        <p id="js-error-message" class="error-message"></p>
-        <section id="results" class="hidden">
-          <h2>Search results</h2>
-         <!-- <p id="totalResults">Total Results:</p> -->
-          <ul id="results-list">
-          </ul>
-        </section>
-    </div>
+                <input type="submit" value="Search">
+            </form>
+        </div>
+        <div class="results-page hidden">
+            <h3>Your Search Results:</h3>            
+            <ul id="results-list">
+            </ul>            
+        </div>        
+    </main>
+    
     <script src="index.js"></script>
 </body>
 </html>

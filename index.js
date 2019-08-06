@@ -29,13 +29,13 @@ function displayResults(responseJson){
         //for (let i = 0; i < responseJson.items.length; i++){
         for (const item of responseJson.items){    
         $('#results-list').append(
-            `<li><h3><a href="${item.edmIsShownBy}">${item.title}</a></h3>
+            `<li><h4><a href="${item.edmIsShownBy}">${item.title}</a></h4>
             <p>${item.dcDescription[0]}</p>
             <img src="${item.edmPreview}"> 
             </li>`
         )};
         
-    $('#results').removeClass('hidden');
+    $('.results-page').removeClass('hidden');
 }
 
 
