@@ -15,11 +15,15 @@ function searchArchives(){
     .then(response=>response.json())
     .then(responseJson=>
             displayResults(responseJson))
-    }
+    .catch(function(e){
+        alert('Something went wrong.');
+        console.log(e);
+    })
+}
 
 function status(response){
     if(!response.ok){
-        throw new error ('Oops. something went wrong');
+        throw new Error('Oops. something went wrong');
     }
     return response; 
 }
@@ -38,13 +42,17 @@ function status(response){
 function displayResults(responseJson){
     $('#results-list').empty();    
         //for (let i = 0; i < responseJson.items.length; i++){
-        for (const item of responseJson.items){    
+    for (const item of responseJson.items){  
+        if(!item.dcDescription){
+            item.dcDescription = [""];
+        }  
         $('#results-list').append(
             `<li><h4><a href="${item.edmIsShownBy}">${item.title}</a></h4>
             <p>${item.dcDescription[0]}</p>
             <img src="${item.edmPreview}"> 
             </li>`
-        )};
+        )
+    }
         
     $('.results-page').removeClass('hidden');
 }
